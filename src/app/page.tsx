@@ -9,7 +9,10 @@ import {Label} from "@/components/ui/label";
 import {Textarea} from "@/components/ui/textarea";
 
 const client = new MercadoPagoConfig({accessToken: process.env.MP_ACCESS_TOKEN!});
-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SECRET!);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export default async function Home() {
   const donations = await supabase
